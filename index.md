@@ -55,14 +55,14 @@ tpl: thankyou}
 ## What do these reviews look like
 
 >- Mixed Reviews
-  + *""*
+  + *"The first representative wasn't helpful. The second one was great."*
 
 ---&footer
 
 ## What do these reviews look like
 
 >- Negative Reviews
-  + *""*
+  + *"Couldn't address my concerns to satisfaction."*
 
 ---&footer
 
