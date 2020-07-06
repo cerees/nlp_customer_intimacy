@@ -13,8 +13,10 @@ library(RSvgDevice)
 ###CREATE DIAGRAMS AND SLIDES###
 ################################
 
+setwd("~/data_science/cdphp_slide_template")
+
 ###AUTHOR SLIDES###
-author("~/data_science/cdphp_slide_template")
+#author("~/data_science/cdphp_slide_template")
 ###CREATE HTML FILE###
 slidify("~/data_science/cdphp_slide_template/index.Rmd")
 ###PUBLSIH SLIDES###

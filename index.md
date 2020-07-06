@@ -74,16 +74,20 @@ tpl: thankyou}
 ---{
 tpl: thankyou}
 
-## Automating Review Processing
+## Automating Review Processing: Transcription
 
 ---&footer
 
 ## Steps Involved
 
 >- Sound file creation from customer feedback process.
->- Transcribing the files using AWS.
->- Conducting an unobserved sentimet analysis to rank problematic cases.
->- Training the model using feedback from the customer intimacy team.
+>- Transcribing the files using AWS Transcribe.
+>- Sentiment analysis using AWS Comprehend.
+>- Normalizing scores using PCA and logistic regression.
+>- Training the model using feedback from the customer intimacy team regading normalized scores.
+
+---&footer
+![width](assets/img/flow_chart.jpg)
 
 ---&footer
 
@@ -134,6 +138,11 @@ print(status)
          ]
    }}
 ```
+
+---{
+tpl: thankyou}
+
+## Automating Review Processing: Sentiment Analysis
 
 ---&footer
 ## Sentiment scoring with AWS Comprehend
@@ -200,6 +209,52 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
 ## 3   Case3 0.002    0.004   0.002      0.7  POSITIVE        It was great
 ```
 
+---{
+tpl: thankyou}
+
+## Automating Review Processing: Modeling
+
+---&footer
+## Outline
+
+>- Set target.
+>- Reduce dimensionality using PCA.
+>- Predict negative classification using dimensionality components.
+>- Send to Customer Intimacy for review.
+>- Reincorporate Customer Intimacy feedback to retrain model. 
+
+---&footer
+## Advantages of PCA
+>- Reduces dimensionality.
+>- Improves capacity for visualization.
+>- Improves algorithm performance.
+>- Limits overfitting.
+>- Removes correlated features.
+
+---&footer
+## PCA
+
+
+```python
+nComponents = 3
+pca_tx = SparsePCA(n_components=nComponents, random_state=0)
+pca_tx.fit(df_data)
+ftrs_transformed=pca_tx.transform(df_data)
+ftrs_transformed
+```
+
+---&footer
+![width](assets/img/flow_chart.jpg)
+
+---&footer
+## PCA Code
+
+```python
+lr_model = LogisticRegression(random_state=0, solver='liblinear').fit(fit_data.iloc[:,1:], fit_data.iloc[:,0])
+pred_class = lr_model.predict(fit_data.iloc[:,1:])
+pred_prob = lr_model.predict_proba(fit_data.iloc[:,1:])
+pred_score = lr_model.decision_function(fit_data.iloc[:,1:])
+norm_pred_score = (pred_score-min(pred_score))/(max(pred_score)-min(predscore))
 
 ---{
 tpl: thankyou}
@@ -249,4 +304,4 @@ social: [{title: Fern, href: "frees@cdphp.com"}]
 <style>
 slide:not(.segue) h2{color: #28a266}
 </style>
-
+```

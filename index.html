@@ -207,7 +207,7 @@ $(function() {
 <slide class="thank-you-slide segue nobackground" id="slide-7">
   <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
   <article class="flexbox vleft auto-fadein">
-    <h2>Automating Review Processing</h2>
+    <h2>Automating Review Processing: Transcription</h2>
     
   </article>
 
@@ -224,9 +224,10 @@ $(function() {
   <article data-timings="">
     <ul class = "build incremental">
 <li>Sound file creation from customer feedback process.</li>
-<li>Transcribing the files using AWS.</li>
-<li>Conducting an unobserved sentimet analysis to rank problematic cases.</li>
-<li>Training the model using feedback from the customer intimacy team.</li>
+<li>Transcribing the files using AWS Transcribe.</li>
+<li>Sentiment analysis using AWS Comprehend.</li>
+<li>Normalizing scores using PCA and logistic regression.</li>
+<li>Training the model using feedback from the customer intimacy team regading normalized scores.</li>
 </ul>
 
 <footer class = 'logo'>
@@ -238,6 +239,19 @@ $(function() {
 </slide>
 
 <slide class="" id="slide-9" style="background:;">
+  
+  <article data-timings="">
+    <p><img src="assets/img/flow_chart.jpg" alt="width"></p>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
   
   <hgroup>
     <h2>Transcription using AWS Transcribe</h2>
@@ -266,7 +280,7 @@ transcribe.start_transcription_job(
   
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   
   <hgroup>
     <h2>Transcription using AWS Transcribe cont.</h2>
@@ -290,7 +304,7 @@ print(status)
   
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   
   <hgroup>
     <h2>Transcription Output</h2>
@@ -317,7 +331,18 @@ print(status)
   
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="thank-you-slide segue nobackground" id="slide-13">
+  <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>Automating Review Processing: Sentiment Analysis</h2>
+    
+  </article>
+
+  <p class="auto-fadein" data-config-contact="">
+    
+  </p>
+</slide>
+<slide class="" id="slide-14" style="background:;">
   
   <hgroup>
     <h2>Sentiment scoring with AWS Comprehend</h2>
@@ -339,7 +364,7 @@ client_comprehend=boto3.client(service_name=serviceName, region_name=regionName)
   
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   
   <hgroup>
     <h2>Sentiment scoring with AWS Comprehend cont.</h2>
@@ -364,7 +389,7 @@ for key in json_transcrips.keys():
   
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   
   <hgroup>
     <h2>Sentiment scoring with AWS Comprehend cont.</h2>
@@ -390,7 +415,7 @@ sentiment_scores=pd.DataFrame(
   
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   
   <hgroup>
     <h2>Sentiment scoring with AWS Comprehend cont.</h2>
@@ -411,7 +436,7 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
   
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   
   <hgroup>
     <h2>Sentiment scoring results</h2>
@@ -432,7 +457,121 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
   
 </slide>
 
-<slide class="thank-you-slide segue nobackground" id="slide-17">
+<slide class="thank-you-slide segue nobackground" id="slide-19">
+  <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>Automating Review Processing: Modeling</h2>
+    
+  </article>
+
+  <p class="auto-fadein" data-config-contact="">
+    
+  </p>
+</slide>
+<slide class="" id="slide-20" style="background:;">
+  
+  <hgroup>
+    <h2>Outline</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Set target.</li>
+<li>Reduce dimensionality using PCA.</li>
+<li>Predict negative classification using dimensionality components.</li>
+<li>Send to Customer Intimacy for review.</li>
+<li>Reincorporate Customer Intimacy feedback to retrain model. </li>
+</ul>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  
+  <hgroup>
+    <h2>Advantages of PCA</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Reduces dimensionality.</li>
+<li>Improves capacity for visualization.</li>
+<li>Improves algorithm performance.</li>
+<li>Limits overfitting.</li>
+<li>Removes correlated features.</li>
+</ul>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  
+  <hgroup>
+    <h2>PCA</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="python">nComponents = 3
+pca_tx = SparsePCA(n_components=nComponents, random_state=0)
+pca_tx.fit(df_data)
+ftrs_transformed=pca_tx.transform(df_data)
+ftrs_transformed
+</code></pre>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  
+  <article data-timings="">
+    <p><img src="assets/img/flow_chart.jpg" alt="width"></p>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  
+  <hgroup>
+    <h2>PCA Code</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="python">lr_model = LogisticRegression(random_state=0, solver=&#39;liblinear&#39;).fit(fit_data.iloc[:,1:], fit_data.iloc[:,0])
+pred_class = lr_model.predict(fit_data.iloc[:,1:])
+pred_prob = lr_model.predict_proba(fit_data.iloc[:,1:])
+pred_score = lr_model.decision_function(fit_data.iloc[:,1:])
+norm_pred_score = (pred_score-min(pred_score))/(max(pred_score)-min(predscore))
+</code></pre>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="thank-you-slide segue nobackground" id="slide-25">
   <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
   <article class="flexbox vleft auto-fadein">
     <h2>Next Steps</h2>
@@ -443,7 +582,7 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
     
   </p>
 </slide>
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   
   <hgroup>
     <h2>Next Steps</h2>
@@ -464,7 +603,7 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
   
 </slide>
 
-<slide class="thank-you-slide segue nobackground" id="slide-19">
+<slide class="thank-you-slide segue nobackground" id="slide-27">
   <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
   <article class="flexbox vleft auto-fadein">
     <h2>Thank You!</h2>
@@ -498,6 +637,8 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
 <style>
 slide:not(.segue) h2{color: #28a266}
 </style>
+
+<pre><code></code></pre>
 
   </article>
 
@@ -556,7 +697,7 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Automating Review Processing'>
+        data-slide=7 title='Automating Review Processing: Transcription'>
          7
       </a>
     </li>
@@ -570,42 +711,42 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Transcription using AWS Transcribe'>
+        data-slide=9 title='NA'>
          9
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Transcription using AWS Transcribe cont.'>
+        data-slide=10 title='Transcription using AWS Transcribe'>
          10
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Transcription Output'>
+        data-slide=11 title='Transcription using AWS Transcribe cont.'>
          11
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Sentiment scoring with AWS Comprehend'>
+        data-slide=12 title='Transcription Output'>
          12
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Sentiment scoring with AWS Comprehend cont.'>
+        data-slide=13 title='Automating Review Processing: Sentiment Analysis'>
          13
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Sentiment scoring with AWS Comprehend cont.'>
+        data-slide=14 title='Sentiment scoring with AWS Comprehend'>
          14
       </a>
     </li>
@@ -619,29 +760,85 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Sentiment scoring results'>
+        data-slide=16 title='Sentiment scoring with AWS Comprehend cont.'>
          16
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Next Steps'>
+        data-slide=17 title='Sentiment scoring with AWS Comprehend cont.'>
          17
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Next Steps'>
+        data-slide=18 title='Sentiment scoring results'>
          18
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Thank You!'>
+        data-slide=19 title='Automating Review Processing: Modeling'>
          19
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Outline'>
+         20
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Advantages of PCA'>
+         21
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='PCA'>
+         22
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='PCA Code'>
+         24
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Next Steps'>
+         25
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Next Steps'>
+         26
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Thank You!'>
+         27
       </a>
     </li>
     
