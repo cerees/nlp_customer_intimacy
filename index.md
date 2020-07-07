@@ -34,28 +34,21 @@ $(function() {
 ## Initial Questions
 
 >- How can we cut down on the amount of time that it takes to process these responses manually?
->- Can we easily differentiate negative experiences from positve experiences?
+>- Can we easily differentiate negative experiences from positive experiences?
 >- Can we reasonably quantify these things over time?
->- What other compenents of reviews might we be able to track?
+>- What other components of reviews might we be able to track?
 
 ---{
 tpl: thankyou}
 
-## Defining the intial problem
+## Defining the initial problem
 
 ---&footer
 
 ## What do these reviews look like
 
 >- Positive Reviews
-  + *"Yeah.  The person that helped me was very hepful.  I wouldn't change a thing.  A great job.  Thaks, guys."*
-
----&footer
-
-## What do these reviews look like
-
->- Mixed Reviews
-  + *"The first representative wasn't helpful. The second one was great."*
+  + *"Yeah.  The person that helped me was very heplful.  I wouldn't change a thing.  A great job.  Thanks, guys."*
 
 ---&footer
 
@@ -68,8 +61,15 @@ tpl: thankyou}
 
 ## What do these reviews look like
 
+>- Mixed Reviews
+  + *"The first representative wasn't helpful. The second one was great."*
+
+---&footer
+
+## What do these reviews look like
+
 >- Non-Reviews
-  + *"Hello, I don't know what's going on."*
+  + *"Hello, umm I don't know what's going on."*
 
 ---{
 tpl: thankyou}
@@ -84,7 +84,7 @@ tpl: thankyou}
 >- Transcribing the files using AWS Transcribe.
 >- Sentiment analysis using AWS Comprehend.
 >- Normalizing scores using PCA and logistic regression.
->- Training the model using feedback from the customer intimacy team regading normalized scores.
+>- Training the model using feedback from the customer intimacy team regarding normalized scores.
 
 ---&footer
 ![width](assets/img/flow_chart.jpg)
@@ -219,12 +219,12 @@ tpl: thankyou}
 
 >- Set target.
 >- Reduce dimensionality using PCA.
->- Predict negative classification using dimensionality components.
+>- Predict negative classification using PCA components.
 >- Send to Customer Intimacy for review.
 >- Reincorporate Customer Intimacy feedback to retrain model. 
 
 ---&footer
-## Advantages of PCA
+## Advantages of PCA and Feature Reduction
 >- Reduces dimensionality.
 >- Improves capacity for visualization.
 >- Improves algorithm performance.
@@ -262,14 +262,22 @@ tpl: thankyou}
 ## Next Steps
 
 ---&footer
-## Next Steps
->- Have customer intimacy team review
->- Train model based upon observation
->- Explore measuring different definitions and identifying review features
+## Next Steps: Customer Intimacy
+>- Ranked data was given to Vicky from the customer intimacy team.
+>- She will provide an observed ranking of the data.
+>- That information will become the target outcome for subsequent analysis.
+>- She can also provide other insights to where the initial model may be working well and where it doesn't.
+
+---&footer
+## Next Steps: Modeling
+>- Train model based upon observed classification.
+>- Explore measuring different definitions and identifying review features.
+>- Explore different dimensionality reduction strategies other than PCA.
+>- Explore modeling alternatives other than Logistic Regression.
 
 ---{
 tpl: thankyou,
-social: [{title: Fern, href: "frees@cdphp.com"}]
+social: [{title: Fern, href: "fern.rees@cdphp.com"}]
 }
 
 ## Thank You!

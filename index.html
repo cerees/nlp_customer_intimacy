@@ -88,9 +88,9 @@ $(function() {
 
 <ul class = "build incremental">
 <li>How can we cut down on the amount of time that it takes to process these responses manually?</li>
-<li>Can we easily differentiate negative experiences from positve experiences?</li>
+<li>Can we easily differentiate negative experiences from positive experiences?</li>
 <li>Can we reasonably quantify these things over time?</li>
-<li>What other compenents of reviews might we be able to track?</li>
+<li>What other components of reviews might we be able to track?</li>
 </ul>
 
 <footer class = 'logo'>
@@ -104,7 +104,7 @@ $(function() {
 <slide class="thank-you-slide segue nobackground" id="slide-2">
   <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
   <article class="flexbox vleft auto-fadein">
-    <h2>Defining the intial problem</h2>
+    <h2>Defining the initial problem</h2>
     
   </article>
 
@@ -123,7 +123,7 @@ $(function() {
 <li>Positive Reviews
 
 <ul>
-<li><em>&quot;Yeah.  The person that helped me was very hepful.  I wouldn&#39;t change a thing.  A great job.  Thaks, guys.&quot;</em></li>
+<li><em>&quot;Yeah.  The person that helped me was very heplful.  I wouldn&#39;t change a thing.  A great job.  Thanks, guys.&quot;</em></li>
 </ul></li>
 </ul>
 
@@ -136,29 +136,6 @@ $(function() {
 </slide>
 
 <slide class="" id="slide-4" style="background:;">
-  
-  <hgroup>
-    <h2>What do these reviews look like</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <ul class = "build incremental">
-<li>Mixed Reviews
-
-<ul>
-<li><em>&quot;The first representative wasn&#39;t helpful. The second one was great.&quot;</em></li>
-</ul></li>
-</ul>
-
-<footer class = 'logo'>
-  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
-</footer>
-  </article>
-  <!-- Presenter Notes -->
-  
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
   
   <hgroup>
     <h2>What do these reviews look like</h2>
@@ -181,6 +158,29 @@ $(function() {
   
 </slide>
 
+<slide class="" id="slide-5" style="background:;">
+  
+  <hgroup>
+    <h2>What do these reviews look like</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Mixed Reviews
+
+<ul>
+<li><em>&quot;The first representative wasn&#39;t helpful. The second one was great.&quot;</em></li>
+</ul></li>
+</ul>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
 <slide class="" id="slide-6" style="background:;">
   
   <hgroup>
@@ -192,7 +192,7 @@ $(function() {
 <li>Non-Reviews
 
 <ul>
-<li><em>&quot;Hello, I don&#39;t know what&#39;s going on.&quot;</em></li>
+<li><em>&quot;Hello, umm I don&#39;t know what&#39;s going on.&quot;</em></li>
 </ul></li>
 </ul>
 
@@ -227,7 +227,7 @@ $(function() {
 <li>Transcribing the files using AWS Transcribe.</li>
 <li>Sentiment analysis using AWS Comprehend.</li>
 <li>Normalizing scores using PCA and logistic regression.</li>
-<li>Training the model using feedback from the customer intimacy team regading normalized scores.</li>
+<li>Training the model using feedback from the customer intimacy team regarding normalized scores.</li>
 </ul>
 
 <footer class = 'logo'>
@@ -478,7 +478,7 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
     <ul class = "build incremental">
 <li>Set target.</li>
 <li>Reduce dimensionality using PCA.</li>
-<li>Predict negative classification using dimensionality components.</li>
+<li>Predict negative classification using PCA components.</li>
 <li>Send to Customer Intimacy for review.</li>
 <li>Reincorporate Customer Intimacy feedback to retrain model. </li>
 </ul>
@@ -494,7 +494,7 @@ sentiment_df=(sentiment_scores.join(sentiment_df)
 <slide class="" id="slide-21" style="background:;">
   
   <hgroup>
-    <h2>Advantages of PCA</h2>
+    <h2>Advantages of PCA and Feature Reduction</h2>
   </hgroup>
   
   <article data-timings="">
@@ -585,14 +585,15 @@ norm_pred_score = (pred_score-min(pred_score))/(max(pred_score)-min(predscore))
 <slide class="" id="slide-26" style="background:;">
   
   <hgroup>
-    <h2>Next Steps</h2>
+    <h2>Next Steps: Customer Intimacy</h2>
   </hgroup>
   
   <article data-timings="">
     <ul class = "build incremental">
-<li>Have customer intimacy team review</li>
-<li>Train model based upon observation</li>
-<li>Explore measuring different definitions and identifying review features</li>
+<li>Ranked data was given to Vicky from the customer intimacy team.</li>
+<li>She will provide an observed ranking of the data.</li>
+<li>That information will become the target outcome for subsequent analysis.</li>
+<li>She can also provide other insights to where the initial model may be working well and where it doesn&#39;t.</li>
 </ul>
 
 <footer class = 'logo'>
@@ -603,7 +604,29 @@ norm_pred_score = (pred_score-min(pred_score))/(max(pred_score)-min(predscore))
   
 </slide>
 
-<slide class="thank-you-slide segue nobackground" id="slide-27">
+<slide class="" id="slide-27" style="background:;">
+  
+  <hgroup>
+    <h2>Next Steps: Modeling</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Train model based upon observed classification.</li>
+<li>Explore measuring different definitions and identifying review features.</li>
+<li>Explore different dimensionality reduction strategies other than PCA.</li>
+<li>Explore modeling alternatives other than Logistic Regression.</li>
+</ul>
+
+<footer class = 'logo'>
+  <img src = 'assets/img/cdphp_a_plan_for_life.png' width=20%></img>
+</footer>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="thank-you-slide segue nobackground" id="slide-28">
   <aside class="gdbar right"><img src="assets/img/cdphp_a_plan_for_life.png"></aside>
   <article class="flexbox vleft auto-fadein">
     <h2>Thank You!</h2>
@@ -644,7 +667,7 @@ slide:not(.segue) h2{color: #28a266}
 
   <p class="auto-fadein" data-config-contact="">
     
-    <span>Fern</span><a href="frees@cdphp.com">frees@cdphp.com</a><br>
+    <span>Fern</span><a href="fern.rees@cdphp.com">fern.rees@cdphp.com</a><br>
     
   </p>
 </slide>
@@ -662,7 +685,7 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Defining the intial problem'>
+        data-slide=2 title='Defining the initial problem'>
          2
       </a>
     </li>
@@ -795,7 +818,7 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Advantages of PCA'>
+        data-slide=21 title='Advantages of PCA and Feature Reduction'>
          21
       </a>
     </li>
@@ -830,15 +853,22 @@ slide:not(.segue) h2{color: #28a266}
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Next Steps'>
+        data-slide=26 title='Next Steps: Customer Intimacy'>
          26
       </a>
     </li>
     
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Thank You!'>
+        data-slide=27 title='Next Steps: Modeling'>
          27
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Thank You!'>
+         28
       </a>
     </li>
     

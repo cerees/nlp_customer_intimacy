@@ -20,5 +20,5 @@ setwd("~/data_science/cdphp_slide_template")
 ###CREATE HTML FILE###
 slidify("~/data_science/cdphp_slide_template/index.Rmd")
 ###PUBLSIH SLIDES###
-publish(user = "cerees", repo = "nlp_customer_intimacy")
+publish(user = "fernrees", repo = "nlp_customer_intimacy")
 
